@@ -1,12 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import reportWebVitals from "./reportWebVitals";
 
-import FlightTable from './FlightTable';
-import FlightForm from './FlightForm';
+import FlightTable from "./components/FlightTable";
+import FlightForm from "./components/FlightForm";
 
-class App extends React.Component{
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,21 +26,20 @@ class App extends React.Component{
           nightLanding: 0,
           ifrApproach: 0,
           goAround: 0,
-          opsCondition: "day"
-        }
-      ]
-    }
+          opsCondition: "day",
+        },
+      ],
+    };
   }
 
-  handleChange = (e) =>{
+  handleChange = (e) => {
     e.preventDefault();
-    
+
     const name = e.currentTarget.name;
     const value = e.currentTarget.value;
-    
-    this.setState({[name]: value})
-  }
 
+    this.setState({ [name]: value });
+  };
 
   handleAdd = (flight) => {
     const flights = this.state.flights.slice();
@@ -49,20 +48,18 @@ class App extends React.Component{
     this.setState({ flights: flights });
   };
 
-  render(){
-    return( 
-
-      <div> 
+  render() {
+    return (
+      <div>
         <h1> Entrer un nouveau vol </h1>
 
-        <FlightForm  onFlightAdd={this.handleAdd}/>
+        <FlightForm onFlightAdd={this.handleAdd} />
 
         <h2> Résumé des vols entrés </h2>
 
-        <FlightTable details={this.state.flights}/>
-
-       </div>
-    )
+        <FlightTable details={this.state.flights} />
+      </div>
+    );
   }
 }
 
@@ -70,7 +67,7 @@ ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
